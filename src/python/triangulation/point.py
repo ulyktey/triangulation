@@ -92,7 +92,6 @@ def is_right_distance(point, points, distance):
     for thr in threads:
         thr.join()
 
-
     return bool([x for x in result if x >= distance]) if points else True
 
 
@@ -137,8 +136,11 @@ def main():
 
     _logger = logging.getLogger('generate_point')
     _logger.setLevel(log_level)
-    points = generate_points(((0, 0), (10, 0), (0, 10), (10, 10)), 0, 100, 2)
-    print points
+    points = generate_points(((0, 0), (10, 0), (0, 10), (10, 10)), 0, 10, 2)
+    import kdtree
+    import pdb; pdb.set_trace()
+    tree = kdtree.create(points)
+    kdtree.visualize(tree)
 
 
 if __name__ == '__main__':
